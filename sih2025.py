@@ -217,32 +217,32 @@ if st.session_state.running and not st.session_state.stop_requested:
 
         # Check for drops
         if st.session_state.blocks_top_A == 2 and st.session_state.blocks_top_B < 2:
-            ok = animate_move(scene_ph, "left", left_color, start_y=50, end_y=-50, steps=50)
+            ok = animate_move(scene_ph, "left", left_color, start_y=50, end_y=-50, steps=50, size_kg=20)
             if not ok:
                 st.session_state.stop_requested = True
             st.session_state.blocks_top_A = 0
             st.session_state.storage_left += 10
             st.session_state.tied_bottom_C += 1
-            lifted = st.session_state.tied_bottom_D
-            if lifted > 0:
-                st.session_state.tied_bottom_D = 0
-                ok = animate_move(scene_ph, "right", right_color, start_y=-50, end_y=50, steps=50)
+            lifted = 1  # Lift one 10kg block
+            if lifted > 0 and st.session_state.tied_bottom_D > 0:
+                st.session_state.tied_bottom_D -= 1
+                ok = animate_move(scene_ph, "right", right_color, start_y=-50, end_y=50, steps=50, size_kg=10)
                 if not ok:
                     st.session_state.stop_requested = True
                 st.session_state.blocks_top_B += lifted
             side, opposite, color = "left", "right", left_color
             dropped = True
         elif st.session_state.blocks_top_B == 2 and st.session_state.blocks_top_A < 2:
-            ok = animate_move(scene_ph, "right", right_color, start_y=50, end_y=-50, steps=50)
+            ok = animate_move(scene_ph, "right", right_color, start_y=50, end_y=-50, steps=50, size_kg=20)
             if not ok:
                 st.session_state.stop_requested = True
             st.session_state.blocks_top_B = 0
             st.session_state.storage_right += 10
             st.session_state.tied_bottom_D += 1
-            lifted = st.session_state.tied_bottom_C
-            if lifted > 0:
-                st.session_state.tied_bottom_C = 0
-                ok = animate_move(scene_ph, "left", left_color, start_y=-50, end_y=50, steps=50)
+            lifted = 1  # Lift one 10kg block
+            if lifted > 0 and st.session_state.tied_bottom_C > 0:
+                st.session_state.tied_bottom_C -= 1
+                ok = animate_move(scene_ph, "left", left_color, start_y=-50, end_y=50, steps=50, size_kg=10)
                 if not ok:
                     st.session_state.stop_requested = True
                 st.session_state.blocks_top_A += lifted
@@ -251,31 +251,31 @@ if st.session_state.running and not st.session_state.stop_requested:
         elif st.session_state.blocks_top_A == 2 and st.session_state.blocks_top_B == 2:
             # Alternate drops when both sides have 2 blocks
             if st.session_state.step_count % 2 == 0:
-                ok = animate_move(scene_ph, "left", left_color, start_y=50, end_y=-50, steps=50)
+                ok = animate_move(scene_ph, "left", left_color, start_y=50, end_y=-50, steps=50, size_kg=20)
                 if not ok:
                     st.session_state.stop_requested = True
                 st.session_state.blocks_top_A = 0
                 st.session_state.storage_left += 10
                 st.session_state.tied_bottom_C += 1
-                lifted = st.session_state.tied_bottom_D
-                if lifted > 0:
-                    st.session_state.tied_bottom_D = 0
-                    ok = animate_move(scene_ph, "right", right_color, start_y=-50, end_y=50, steps=50)
+                lifted = 1  # Lift one 10kg block
+                if lifted > 0 and st.session_state.tied_bottom_D > 0:
+                    st.session_state.tied_bottom_D -= 1
+                    ok = animate_move(scene_ph, "right", right_color, start_y=-50, end_y=50, steps=50, size_kg=10)
                     if not ok:
                         st.session_state.stop_requested = True
                     st.session_state.blocks_top_B += lifted
                 side, opposite, color = "left", "right", left_color
             else:
-                ok = animate_move(scene_ph, "right", right_color, start_y=50, end_y=-50, steps=50)
+                ok = animate_move(scene_ph, "right", right_color, start_y=50, end_y=-50, steps=50, size_kg=20)
                 if not ok:
                     st.session_state.stop_requested = True
                 st.session_state.blocks_top_B = 0
                 st.session_state.storage_right += 10
                 st.session_state.tied_bottom_D += 1
-                lifted = st.session_state.tied_bottom_C
-                if lifted > 0:
-                    st.session_state.tied_bottom_C = 0
-                    ok = animate_move(scene_ph, "left", left_color, start_y=-50, end_y=50, steps=50)
+                lifted = 1  # Lift one 10kg block
+                if lifted > 0 and st.session_state.tied_bottom_C > 0:
+                    st.session_state.tied_bottom_C -= 1
+                    ok = animate_move(scene_ph, "left", left_color, start_y=-50, end_y=50, steps=50, size_kg=10)
                     if not ok:
                         st.session_state.stop_requested = True
                     st.session_state.blocks_top_A += lifted
