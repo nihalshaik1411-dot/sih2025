@@ -115,7 +115,7 @@ def draw_scene(moving=None, move_y=None, moving_size=10, move_label="Dropping", 
     fig.add_annotation(x=2.7, y=45, text=f"🔋 B2: {st.session_state.battery2:.0f}%", showarrow=False)
 
     # Houses indicator
-    houses_text = "🏠 lit" if st.session_state.houses_lit else "dark"
+    houses_text = "🏠 lit" if st.session_state.houses_lit else "🏠 dark"
     fig.add_annotation(x=0, y=45, text=houses_text, showarrow=False)
 
     fig.update_xaxes(visible=False, range=[-4, 4])
